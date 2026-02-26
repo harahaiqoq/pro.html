@@ -23,7 +23,8 @@
             background-color: var(--dark-bg);
             color: #fff;
             overflow-x: hidden;
-            cursor: none; 
+            /* Normal cursor restored */
+            cursor: auto; 
         }
 
         /* --- Animated Background Mesh --- */
@@ -31,12 +32,6 @@
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #030303 100%);
             z-index: -1; opacity: 0.6;
-        }
-
-        /* --- Custom Pro Cursor --- */
-        #cursor {
-            width: 30px; height: 30px; border: 2px solid #fff; border-radius: 50%;
-            position: fixed; pointer-events: none; z-index: 10001; transition: transform 0.1s ease;
         }
 
         /* --- Elite Loader --- */
@@ -50,28 +45,45 @@
             animation: slideUp 1s ease forwards;
         }
 
-        /* --- Hero Section --- */
+        /* --- Hero Section Optimized for Desktop Photo --- */
         .hero {
             height: 100vh; display: flex; align-items: center; justify-content: space-between;
-            padding: 0 10%; position: relative;
+            padding: 0 10%; position: relative; gap: 50px;
         }
 
-        .hero-content { max-width: 600px; z-index: 2; }
+        .hero-content { flex: 1; max-width: 600px; z-index: 2; }
         .hero-content h2 { font-size: 1.2rem; color: #a855f7; letter-spacing: 3px; margin-bottom: 20px; text-transform: uppercase; }
         .hero-content h1 { font-size: 5rem; font-weight: 800; line-height: 0.9; margin-bottom: 25px; }
         
         .gradient-text { background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
+        /* --- Optimized Image Container (Canva Style) --- */
         .image-container {
-            position: relative; width: 450px; height: 550px;
-            background: var(--glass); border-radius: 40px; border: 1px solid var(--glass-border);
-            overflow: hidden; backdrop-filter: blur(20px);
+            flex: 1;
+            position: relative; 
+            max-width: 500px; /* Limits width on desktop */
+            height: 80vh; /* Takes most of the screen height */
+            background: var(--glass); 
+            border-radius: 40px; 
+            border: 1px solid var(--glass-border);
+            overflow: hidden; 
+            backdrop-filter: blur(20px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
+        
         .image-container img {
-            width: 100%; height: 100%; object-fit: cover; transition: 0.5s ease;
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; /* Ensures image covers area without stretching */
+            transition: 0.5s ease;
         }
+        
+        .image-container:hover img { transform: scale(1.03); }
 
-        /* --- Updated Contact Grid (WhatsApp & Telegram & Email) --- */
+        /* --- Contact Grid --- */
         .contact-grid {
             padding: 100px 10%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
         }
@@ -98,16 +110,18 @@
 
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* Mobile Optimization */
         @media (max-width: 992px) {
-            .hero { flex-direction: column-reverse; height: auto; padding: 150px 5%; text-align: center; }
+            .hero { flex-direction: column-reverse; height: auto; padding: 150px 5% 100px; text-align: center; gap: 30px; }
+            .hero-content { max-width: 100%; }
             .hero-content h1 { font-size: 3.5rem; }
-            .contact-grid { grid-template-columns: 1fr; }
+            .image-container { width: 100%; max-width: 350px; height: 450px; margin-bottom: 30px; }
+            .contact-grid { grid-template-columns: 1fr; padding: 50px 5%; }
         }
     </style>
 </head>
 <body>
 
-    <div id="cursor"></div>
     <div class="mesh-bg"></div>
 
     <div id="loader">
@@ -122,13 +136,13 @@
             <p style="color: #888; margin-bottom: 40px; line-height: 1.8;">
                 18-year-old developer based in India. Blending the logic of Economics with the creativity of Arts to build modern digital architectures. Master of HTML, CSS, and JS.
             </p>
-            <div style="display: flex; gap: 20px;">
+            <div style="display: flex; gap: 20px; justify-content: inherit;">
                 <a href="mailto:harsh48227@gmail.com" style="padding: 18px 40px; background: #fff; color: #000; border-radius: 100px; text-decoration: none; font-weight: 800; font-size: 0.9rem;">WORK WITH ME</a>
             </div>
         </div>
 
         <div class="image-container" data-aos="zoom-in-left">
-            <img src="harsh.jpg" alt="Harsh Upadhyay">
+            <img src="harsh.jpg" alt="Harsh Upadhyay Portfolio">
         </div>
     </section>
 
@@ -161,11 +175,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
-        const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
+        // Cursor logic removed
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loader').style.transform = 'translateY(-100%)';
