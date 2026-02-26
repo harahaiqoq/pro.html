@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harsh Upadhyay | Creative Developer</title>
+    <title>Harsh Upadhyay | Portfolio</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,8 +13,8 @@
         :root {
             --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
             --dark-bg: #030303;
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.15);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
@@ -23,11 +23,10 @@
             background-color: var(--dark-bg);
             color: #fff;
             overflow-x: hidden;
-            /* Normal cursor restored */
-            cursor: auto; 
+            cursor: auto;
         }
 
-        /* --- Animated Background Mesh --- */
+        /* --- Background Mesh Effect --- */
         .mesh-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #030303 100%);
@@ -38,85 +37,70 @@
         #loader {
             position: fixed; inset: 0; background: #000; z-index: 10000;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: 0.8s cubic-bezier(0.8, 0, 0.2, 1);
         }
         .loader-text {
             font-family: 'Syncopate', sans-serif; font-size: 1.5rem; letter-spacing: 10px;
             background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: slideUp 1s ease forwards;
         }
 
-        /* --- Hero Section Optimized for Desktop Photo --- */
+        /* --- Hero Section --- */
         .hero {
-            height: 100vh; display: flex; align-items: center; justify-content: space-between;
-            padding: 0 10%; position: relative; gap: 50px;
+            min-height: 100vh; display: flex; align-items: center; justify-content: space-between;
+            padding: 80px 10%; gap: 50px;
         }
 
-        .hero-content { flex: 1; max-width: 600px; z-index: 2; }
-        .hero-content h2 { font-size: 1.2rem; color: #a855f7; letter-spacing: 3px; margin-bottom: 20px; text-transform: uppercase; }
-        .hero-content h1 { font-size: 5rem; font-weight: 800; line-height: 0.9; margin-bottom: 25px; }
+        .hero-content { flex: 1.2; z-index: 2; }
+        .hero-content h2 { font-size: 1rem; color: #a855f7; letter-spacing: 3px; margin-bottom: 20px; text-transform: uppercase; }
+        .hero-content h1 { font-size: clamp(3rem, 7vw, 5rem); font-weight: 800; line-height: 0.9; margin-bottom: 25px; }
         
         .gradient-text { background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        /* --- Optimized Image Container (Canva Style) --- */
+        /* --- Desktop Optimized Photo Container --- */
         .image-container {
-            flex: 1;
-            position: relative; 
-            max-width: 500px; /* Limits width on desktop */
-            height: 80vh; /* Takes most of the screen height */
-            background: var(--glass); 
-            border-radius: 40px; 
+            flex: 0.8;
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            aspect-ratio: 4/5;
+            background: var(--glass);
+            border-radius: 40px;
             border: 1px solid var(--glass-border);
-            overflow: hidden; 
+            overflow: hidden;
             backdrop-filter: blur(20px);
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
         }
-        
+
         .image-container img {
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; /* Ensures image covers area without stretching */
-            transition: 0.5s ease;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
-        
-        .image-container:hover img { transform: scale(1.03); }
 
         /* --- Contact Grid --- */
         .contact-grid {
-            padding: 100px 10%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+            padding: 80px 10%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
         }
         .contact-box {
             background: var(--glass); border: 1px solid var(--glass-border);
             padding: 40px; border-radius: 30px; text-align: center;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-decoration: none; color: #fff;
+            transition: 0.4s; text-decoration: none; color: #fff;
         }
         .contact-box:hover {
-            background: rgba(255, 255, 255, 0.08); border-color: #ec4899;
-            transform: translateY(-10px);
+            border-color: #ec4899; transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
         }
         .contact-box i { font-size: 2.5rem; margin-bottom: 20px; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        /* --- Floating WhatsApp --- */
-        .fab-wa {
-            position: fixed; bottom: 40px; right: 40px;
-            width: 60px; height: 60px; background: #25D366;
-            border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            font-size: 1.8rem; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
-            z-index: 1000; transition: 0.3s; text-decoration: none; color: #fff;
-        }
-
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Mobile Optimization */
         @media (max-width: 992px) {
-            .hero { flex-direction: column-reverse; height: auto; padding: 150px 5% 100px; text-align: center; gap: 30px; }
-            .hero-content { max-width: 100%; }
+            .hero { flex-direction: column-reverse; height: auto; padding: 120px 5% 50px; text-align: center; }
             .hero-content h1 { font-size: 3.5rem; }
-            .image-container { width: 100%; max-width: 350px; height: 450px; margin-bottom: 30px; }
-            .contact-grid { grid-template-columns: 1fr; padding: 50px 5%; }
+            .image-container { width: 100%; max-width: 320px; margin-bottom: 30px; }
+            .contact-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -131,10 +115,10 @@
 
     <section class="hero">
         <div class="hero-content" data-aos="fade-right">
-            <h2>Web Engineer & Storyteller</h2>
+            <h2>Creative Developer</h2>
             <h1>Elevating <br><span class="gradient-text">Experiences.</span></h1>
-            <p style="color: #888; margin-bottom: 40px; line-height: 1.8;">
-                18-year-old developer based in India. Blending the logic of Economics with the creativity of Arts to build modern digital architectures. Master of HTML, CSS, and JS.
+            <p style="color: #888; margin-bottom: 40px; line-height: 1.8; max-width: 500px;">
+                18-year-old developer based in India. Master of HTML, CSS, and JS. Bringing Anime vibes and Professional logic to the web.
             </p>
             <div style="display: flex; gap: 20px; justify-content: inherit;">
                 <a href="mailto:harsh48227@gmail.com" style="padding: 18px 40px; background: #fff; color: #000; border-radius: 100px; text-decoration: none; font-weight: 800; font-size: 0.9rem;">WORK WITH ME</a>
@@ -142,7 +126,7 @@
         </div>
 
         <div class="image-container" data-aos="zoom-in-left">
-            <img src="harsh.jpg" alt="Harsh Upadhyay Portfolio">
+            <img src="harsh.png" alt="Harsh Upadhyay Portfolio">
         </div>
     </section>
 
@@ -150,7 +134,7 @@
         <a href="https://wa.me/918920840688" class="contact-box" data-aos="fade-up">
             <i class="fab fa-whatsapp"></i>
             <h3>WhatsApp</h3>
-            <p style="color: #666; margin-top: 10px;">Chat with me instantly</p>
+            <p style="color: #666; margin-top: 10px;">Ping me for work</p>
         </a>
         <a href="https://t.me/+DvSgQwffeiwxMzg1" class="contact-box" data-aos="fade-up" data-aos-delay="100">
             <i class="fab fa-telegram-plane"></i>
@@ -164,10 +148,6 @@
         </a>
     </section>
 
-    <a href="https://wa.me/918920840688" class="fab-wa">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <footer style="padding: 50px; text-align: center; color: #444; border-top: 1px solid #111;">
         <p>© 2026 DESIGNED BY HARSH. ALL RIGHTS RESERVED.</p>
     </footer>
@@ -175,11 +155,13 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
-        // Cursor logic removed
+        
         window.addEventListener('load', () => {
             setTimeout(() => {
-                document.getElementById('loader').style.transform = 'translateY(-100%)';
-                document.getElementById('loader').style.transition = '1s cubic-bezier(0.8, 0, 0.2, 1)';
+                document.getElementById('loader').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loader').style.display = 'none';
+                }, 800);
             }, 2500);
         });
     </script>
