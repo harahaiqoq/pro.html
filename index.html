@@ -3,92 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harsh | Portfolio Pro</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Harsh Upadhyay | Creative Developer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
-        body { transition: all 0.3s ease; font-family: 'JetBrains Mono', monospace; }
-        .dark { background: #0a0a0c; color: #e2e8f0; }
-        .light { background: #f8fafc; color: #0f172a; }
-        .glass { background: rgba(23, 23, 27, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
-        .glow-text { text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
-        #cursor { border-left: 2px solid #3b82f6; animation: blink 0.7s infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
+        :root {
+            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --dark-bg: #030303;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: #fff;
+            overflow-x: hidden;
+            cursor: none; 
+        }
+
+        /* --- Animated Background Mesh --- */
+        .mesh-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #030303 100%);
+            z-index: -1; opacity: 0.6;
+        }
+
+        /* --- Custom Pro Cursor --- */
+        #cursor {
+            width: 30px; height: 30px; border: 2px solid #fff; border-radius: 50%;
+            position: fixed; pointer-events: none; z-index: 10001; transition: transform 0.1s ease;
+        }
+
+        /* --- Elite Loader --- */
+        #loader {
+            position: fixed; inset: 0; background: #000; z-index: 10000;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+        .loader-text {
+            font-family: 'Syncopate', sans-serif; font-size: 1.5rem; letter-spacing: 10px;
+            background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: slideUp 1s ease forwards;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh; display: flex; align-items: center; justify-content: space-between;
+            padding: 0 10%; position: relative;
+        }
+
+        .hero-content { max-width: 600px; z-index: 2; }
+        .hero-content h2 { font-size: 1.2rem; color: #a855f7; letter-spacing: 3px; margin-bottom: 20px; text-transform: uppercase; }
+        .hero-content h1 { font-size: 5rem; font-weight: 800; line-height: 0.9; margin-bottom: 25px; }
+        
+        .gradient-text { background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .image-container {
+            position: relative; width: 450px; height: 550px;
+            background: var(--glass); border-radius: 40px; border: 1px solid var(--glass-border);
+            overflow: hidden; backdrop-filter: blur(20px);
+        }
+        .image-container img {
+            width: 100%; height: 100%; object-fit: cover; transition: 0.5s ease;
+        }
+
+        /* --- Updated Contact Grid (WhatsApp & Telegram & Email) --- */
+        .contact-grid {
+            padding: 100px 10%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+        }
+        .contact-box {
+            background: var(--glass); border: 1px solid var(--glass-border);
+            padding: 40px; border-radius: 30px; text-align: center;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none; color: #fff;
+        }
+        .contact-box:hover {
+            background: rgba(255, 255, 255, 0.08); border-color: #ec4899;
+            transform: translateY(-10px);
+        }
+        .contact-box i { font-size: 2.5rem; margin-bottom: 20px; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* --- Floating WhatsApp --- */
+        .fab-wa {
+            position: fixed; bottom: 40px; right: 40px;
+            width: 60px; height: 60px; background: #25D366;
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 1.8rem; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            z-index: 1000; transition: 0.3s; text-decoration: none; color: #fff;
+        }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 992px) {
+            .hero { flex-direction: column-reverse; height: auto; padding: 150px 5%; text-align: center; }
+            .hero-content h1 { font-size: 3.5rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
-<body class="dark min-h-screen py-10 px-4">
+<body>
 
-    <button onclick="toggleMode()" class="fixed top-5 right-5 bg-blue-600 hover:bg-blue-500 p-3 rounded-full text-white shadow-lg z-50">
-        <i id="mode-icon" class="fas fa-sun"></i>
-    </button>
+    <div id="cursor"></div>
+    <div class="mesh-bg"></div>
 
-    <div class="max-w-4xl mx-auto">
-        <header class="glass p-8 rounded-3xl mb-8 flex flex-col md:flex-row items-center gap-6">
-            <div class="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl shadow-2xl flex items-center justify-center text-5xl font-bold text-white">H</div>
-            <div class="text-center md:text-left">
-                <h1 class="text-4xl font-extrabold glow-text">HARSH <span class="text-blue-500">_v2.0</span></h1>
-                <p class="text-blue-400 mt-2 tracking-widest uppercase text-sm font-bold">
-                    <span id="typing-effect"></span><span id="cursor"></span>
-                </p>
-            </div>
-        </header>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <section class="md:col-span-2 glass p-8 rounded-3xl border-l-4 border-blue-500">
-                <h2 class="text-2xl font-bold mb-4"><i class="fas fa-terminal mr-2 text-blue-500"></i> SYSTEM_ABOUT</h2>
-                <p class="opacity-80 leading-relaxed mb-4 text-lg">
-                    Class **12-E** | Arts & Economics Student. 📈
-                </p>
-                <p class="opacity-70 leading-relaxed">
-                    Main Arts ki creativity aur Economics ke data-driven mindset ko use karke coding karta hoon. My focus is on **Python Automation** and **Professional Bot Development**.
-                </p>
-            </section>
-
-            <section class="glass p-8 rounded-3xl">
-                <h3 class="text-xl font-bold mb-4 text-blue-500">EXPERTISE</h3>
-                <div class="space-y-4 text-sm font-bold">
-                    <p>ECONOMICS <span class="float-right text-green-500">90%</span></p>
-                    <div class="w-full bg-gray-700 h-2 rounded-full"><div class="bg-green-500 h-2 rounded-full w-[90%]"></div></div>
-                    
-                    <p class="mt-4">BOT DEV <span class="float-right text-blue-500">85%</span></p>
-                    <div class="w-full bg-gray-700 h-2 rounded-full"><div class="bg-blue-500 h-2 rounded-full w-[85%]"></div></div>
-                </div>
-            </section>
-        </div>
-
-        <footer class="mt-12 text-center opacity-50 text-xs tracking-tighter">
-            <p>AUTO-SYNCED WITH GITHUB | POWERED BY HARSH-LOGIC</p>
-        </footer>
+    <div id="loader">
+        <div class="loader-text">HARSH UPADHYAY</div>
+        <p style="margin-top: 20px; font-size: 0.8rem; letter-spacing: 5px; color: #555;">WELCOME GUYS...</p>
     </div>
 
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-right">
+            <h2>Web Engineer & Storyteller</h2>
+            <h1>Elevating <br><span class="gradient-text">Experiences.</span></h1>
+            <p style="color: #888; margin-bottom: 40px; line-height: 1.8;">
+                18-year-old developer based in India. Blending the logic of Economics with the creativity of Arts to build modern digital architectures. Master of HTML, CSS, and JS.
+            </p>
+            <div style="display: flex; gap: 20px;">
+                <a href="mailto:harsh48227@gmail.com" style="padding: 18px 40px; background: #fff; color: #000; border-radius: 100px; text-decoration: none; font-weight: 800; font-size: 0.9rem;">WORK WITH ME</a>
+            </div>
+        </div>
+
+        <div class="image-container" data-aos="zoom-in-left">
+            <img src="harsh.jpg" alt="Harsh Upadhyay">
+        </div>
+    </section>
+
+    <section class="contact-grid">
+        <a href="https://wa.me/918920840688" class="contact-box" data-aos="fade-up">
+            <i class="fab fa-whatsapp"></i>
+            <h3>WhatsApp</h3>
+            <p style="color: #666; margin-top: 10px;">Chat with me instantly</p>
+        </a>
+        <a href="https://t.me/+DvSgQwffeiwxMzg1" class="contact-box" data-aos="fade-up" data-aos-delay="100">
+            <i class="fab fa-telegram-plane"></i>
+            <h3>Telegram</h3>
+            <p style="color: #666; margin-top: 10px;">Join my community</p>
+        </a>
+        <a href="mailto:harsh48227@gmail.com" class="contact-box" data-aos="fade-up" data-aos-delay="200">
+            <i class="far fa-envelope"></i>
+            <h3>Official Mail</h3>
+            <p style="color: #666; margin-top: 10px;">harsh48227@gmail.com</p>
+        </a>
+    </section>
+
+    <a href="https://wa.me/918920840688" class="fab-wa">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer style="padding: 50px; text-align: center; color: #444; border-top: 1px solid #111;">
+        <p>© 2026 DESIGNED BY HARSH. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // 1. Typewriter Animation Logic
-        const text = "Arts + Economics Strategist | Pro Bot Developer";
-        let i = 0;
-        function typeWriter() {
-            if (i < text.length) {
-                document.getElementById("typing-effect").innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 80);
-            }
-        }
-
-        // 2. Dark/Light Mode Toggle Logic
-        function toggleMode() {
-            const body = document.body;
-            const icon = document.getElementById("mode-icon");
-            if (body.classList.contains("dark")) {
-                body.classList.replace("dark", "light");
-                icon.classList.replace("fa-sun", "fa-moon");
-            } else {
-                body.classList.replace("light", "dark");
-                icon.classList.replace("fa-moon", "fa-sun");
-            }
-        }
-
-        // Start typewriter on load
-        window.onload = typeWriter;
+        AOS.init({ duration: 1000, once: true });
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').style.transform = 'translateY(-100%)';
+                document.getElementById('loader').style.transition = '1s cubic-bezier(0.8, 0, 0.2, 1)';
+            }, 2500);
+        });
     </script>
 </body>
 </html>
