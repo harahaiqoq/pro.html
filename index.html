@@ -1,38 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harsh | Full Stack Developer</title>
+    <title>Harsh | Creative Full Stack Developer</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="bg-elements">
         <div class="floating-shape shape-1"></div>
         <div class="floating-shape shape-2"></div>
         <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+        <div class="floating-shape shape-5"></div>
     </div>
 
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="logo">
-                <span class="logo-bracket">&lt;</span> HARSH <span class="logo-bracket">/&gt;</span>
+                <span class="logo-bracket">&lt;</span><span class="logo-text">HARSH</span><span class="logo-bracket">/&gt;</span>
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#certificates">Certificates</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="nav-right">
-                <button class="theme-toggle" id="themeToggle">
-                    <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="toggle-track">
+                        <span class="toggle-thumb">
+                            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                        </span>
+                    </span>
                 </button>
-                <button class="hamburger" id="hamburger">
-                    <span></span><span></span><span></span>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
             </div>
         </div>
@@ -40,7 +55,7 @@
 
     <section class="hero" id="home">
         <div class="hero-content">
-            <div class="hero-text">
+            <div class="hero-text" data-aos="fade-right">
                 <p class="greeting">Hello, I'm</p>
                 <h1 class="name">Harsh</h1>
                 <div class="typing-container">
@@ -49,59 +64,127 @@
                     <span class="cursor">|</span>
                 </div>
                 <p class="hero-description">
-                    18-year-old developer based in India. Master of HTML, CSS, and JS. Bringing Anime vibes and Professional logic to the web. 
+                    I'm a passionate Full Stack Developer with expertise in building modern, responsive, and user-centric web applications and Telegram bots. Master of HTML, CSS, and JS. Bringing creative vibes and professional logic to the digital world.
                 </p>
                 <div class="hero-buttons">
                     <a href="https://t.me/+DvSgQwffeiwxMzg1" target="_blank" class="btn btn-primary">
-                        <span>Join Telegram Channel</span>
+                        <span>View My Projects</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
                     </a>
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span>Contact Me</span>
+                    </a>
                 </div>
             </div>
-            <div class="hero-visual">
+            <div class="hero-visual" data-aos="zoom-in-left" data-aos-delay="300">
                 <div class="code-block">
                     <div class="code-header">
                         <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                        <span class="file-name">harsh.js</span>
+                        <span class="file-name">harsh_dev.js</span>
                     </div>
                     <pre class="code-content"><code><span class="code-keyword">const</span> <span class="code-variable">developer</span> = {
   <span class="code-property">name</span>: <span class="code-string">"Harsh"</span>,
-  <span class="code-property">age</span>: <span class="code-string">"18"</span>,
-  <span class="code-property">skills</span>: [<span class="code-string">"JS"</span>, <span class="code-string">"Firebase"</span>, <span class="code-string">"Telegram Bots"</span>],
-  <span class="code-property">status</span>: <span class="code-string">"Building the Future"</span>
+  <span class="code-property">role</span>: <span class="code-string">"Full Stack Developer"</span>,
+  <span class="code-property">skills</span>: [<span class="code-string">"Node.js"</span>, <span class="code-string">"Express.js"</span>, <span class="code-string">"MongoDB"</span>],
+  <span class="code-property">passion</span>: <span class="code-string">"Building creative platforms"</span>,
+  <span class="code-property">available</span>: <span class="code-keyword">true</span>
 };</code></pre>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="contact" id="contact" style="padding: 80px 0; text-align: center;">
+    <section class="about" id="about">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Get In Touch</span>
-                <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+                <span class="section-tag">About Me</span>
+                <h2 class="section-title">Turning Ideas Into <span class="gradient-text">Reality</span></h2>
             </div>
-            <div class="about-highlights" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px;">
-                <a href="mailto:harsh48227@gmail.com" class="highlight-item" style="text-decoration:none;">
-                    <div class="highlight-content">
-                        <h4>Gmail</h4>
-                        <p>harsh48227@gmail.com</p>
+            <div class="about-content">
+                <div class="about-image" data-aos="fade-up">
+                    <div class="image-frame">
+                        <div class="image-placeholder">
+                            <i class="fas fa-user-circle"></i> </div>
+                        <div class="image-glow"></div>
                     </div>
+                </div>
+                <div class="about-text" data-aos="fade-up" data-aos-delay="200">
+                    <p class="about-intro">
+                        I'm a passionate Full Stack Developer with extensive expertise in building modern, responsive, and user-centric web applications. Focused on continuous learning and delivering high-quality solutions, I focus on network tools, disposable email platforms like TempMailGet, and interactive Telegram communities.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight-item"><div class="highlight-icon"><i class="fas fa-magic"></i></div><div class="highlight-content"><h4>Problem Solver</h4><p>Effective technical solutions</p></div></div>
+                        <div class="highlight-item"><div class="highlight-icon"><i class="fas fa-users"></i></div><div class="highlight-content"><h4>Team Player</h4><p>Collaborative communication</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Skills</span>
+                <h2 class="section-title">Technologies I <span class="gradient-text">Work With</span></h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category" data-aos="fade-up">
+                    <h3 class="category-title">Frontend</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">Tailwind</span><span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="category-title">Backend</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Node.js</span><span class="skill-tag">Express</span><span class="skill-tag">REST APIs</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-marquee">
+                <div class="marquee-track">
+                    <div class="marquee-item"><i class="fab fa-html5" style="color:#E34F26"></i><span class="skill-name">HTML5</span></div>
+                    <div class="marquee-item"><i class="fab fa-css3-alt" style="color:#1572B6"></i><span class="skill-name">CSS3</span></div>
+                    <div class="marquee-item"><i class="fab fa-js-square" style="color:#F7DF1E"></i><span class="skill-name">JavaScript</span></div>
+                    <div class="marquee-item"><i class="fab fa-node-js" style="color:#68A063"></i><span class="skill-name">Node.js</span></div>
+                    <div class="marquee-item"><img src="media/mongodb-removebg-preview.png" alt="MongoDB"><span class="skill-name">MongoDB</span></div>
+                    <div class="marquee-item"><img src="media/tailwind-removebg-preview.png" alt="Tailwind"><span class="skill-name">Tailwind</span></div>
+                    <div class="marquee-item"><i class="fab fa-github" style="color:#fff"></i><span class="skill-name">GitHub</span></div>
+                    <div class="marquee-item"><i class="fab fa-html5" style="color:#E34F26"></i><span class="skill-name">HTML5</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Contact</span>
+                <h2 class="section-title">Let's <span class="gradient-text">Work Together</span></h2>
+            </div>
+            <div class="about-highlights" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <a href="mailto:harsh48227@gmail.com" class="highlight-item" data-aos="fade-up">
+                    <div class="highlight-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="highlight-content"><h4>Gmail</h4><p>harsh48227@gmail.com</p></div>
                 </a>
-                <a href="https://t.me/pmharsh" target="_blank" class="highlight-item" style="text-decoration:none;">
-                    <div class="highlight-content">
-                        <h4>Telegram ID</h4>
-                        <p>@pmharsh</p>
-                    </div>
+                <a href="https://t.me/pmharsh" target="_blank" class="highlight-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="highlight-icon"><i class="fab fa-telegram"></i></div>
+                    <div class="highlight-content"><h4>Telegram ID</h4><p>@pmharsh</p></div>
+                </a>
+                <a href="https://t.me/+DvSgQwffeiwxMzg1" target="_blank" class="highlight-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="highlight-icon"><i class="fas fa-bullhorn"></i></div>
+                    <div class="highlight-content"><h4>Telegram Channel</h4><p>Join My Community</p></div>
                 </a>
             </div>
         </div>
     </section>
 
-    <footer style="text-align:center; padding: 40px; color: var(--text-muted);">
-        <p>© 2026 Designed by Harsh. All Rights Reserved.</p>
+    <footer style="padding: 40px; text-align: center; color: #555; border-top: 1px solid rgba(255,255,255,0.05);">
+        <p>© 2026 Designed by Harsh. All rights reserved.</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
-</html>
+      </html>
+      
