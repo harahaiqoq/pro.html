@@ -1,24 +1,57 @@
-// Typing Animation Phrases Update
-const typedText = document.getElementById('typedText');
-const phrases = [
-    'Full Stack Developer',
-    'Telegram Bot Expert',
-    'Creative Coder',
-    'Tech Enthusiast'
-];
-// ... (keep the rest of the typing logic from your original script)
+// Start Typing effect when content is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Typing Animation
+    const typedText = document.getElementById('typedText');
+    const phrases = [
+        'Full Stack Developer',
+        'Web Developer',
+        'Problem Solver',
+        'Telegram Bot Expert'
+    ];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
 
-// Start typing effect
-document.addEventListener('DOMContentLoaded', typeEffect);
+    function typeEffect() {
+        const currentPhrase = phrases[phraseIndex];
+        
+        if (isDeleting) {
+            typedText.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = 50;
+        } else {
+            typedText.textContent = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 100;
+        }
+        
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            isDeleting = true;
+            typingSpeed = 2000;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            typingSpeed = 500;
+        }
+        
+        setTimeout(typeEffect, typingSpeed);
+    }
+    typeEffect();
 
-// Mobile Menu Toggle
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
+    // AOS Animation Initialize
+    AOS.init({ duration: 1000, once: true });
+
+    // Navbar Scrolled Effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Mobile Hamburger Toggle (Add your existing mobile menu JS logic here)
 });
-
-// Console Message Update
-console.log('%c Welcome to Harsh\'s Portfolio! ', 'background: #7C3AED; color: white; padding: 10px; font-size: 14px; border-radius: 5px;');
-console.log('%c Build with love by Harsh.', 'color: #A78BFA;');
