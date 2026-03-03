@@ -1,0 +1,238 @@
+/* ================================
+   CSS Variables & Theme Setup
+   ================================ */
+:root {
+    /* Dark Theme (Default) */
+    --bg-primary: #0a0612;
+    --bg-secondary: #110c1d;
+    --bg-surface: #161025;
+    --bg-card: #1a142c;
+    --bg-card-hover: #231d3a;
+    
+    --text-primary: #E8E4F0;
+    --text-secondary: #9D97AF;
+    --text-muted: #5C5670;
+    
+    --primary: #B794F6;
+    --primary-light: #D6BCFA;
+    --primary-dark: #805AD5;
+    --primary-glow: rgba(183, 148, 246, 0.35);
+    
+    --accent: #9F7AEA;
+    --accent-gradient: linear-gradient(135deg, #805AD5 0%, #B794F6 100%);
+    
+    --border-color: rgba(183, 148, 246, 0.12);
+    --border-glow: rgba(183, 148, 246, 0.5);
+    
+    --shadow-glow: 0 0 40px var(--primary-glow);
+    --gradient-text: linear-gradient(135deg, #B794F6 0%, #805AD5 100%);
+    
+    --transition-medium: 0.3s ease;
+    --font-main: 'Outfit', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    
+    --nav-height: 70px;
+}
+
+/* Light Theme Support */
+[data-theme="light"] {
+    --bg-primary: #FAF9FC;
+    --bg-secondary: #F3F0FA;
+    --bg-surface: #EDE8F5;
+    --bg-card: #FFFFFF;
+    --text-primary: #1A1625;
+    --text-secondary: #4A4458;
+    --primary: #7C3AED;
+    --border-color: rgba(124, 58, 237, 0.15);
+}
+
+/* ================================
+   Base Styles
+   ================================ */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color var(--transition-medium);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ================================
+   Navigation
+   ================================ */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: var(--nav-height);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    background: rgba(10, 6, 18, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.logo {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* ================================
+   Hero Section
+   ================================ */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: var(--nav-height);
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.name {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 800;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.typing-container {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: var(--text-secondary);
+}
+
+.typed-text {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.btn {
+    display: inline-flex;
+    padding: 14px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: var(--accent-gradient);
+    color: white;
+    box-shadow: var(--shadow-glow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px var(--primary-glow);
+}
+
+/* ================================
+   Code Block Visual
+   ================================ */
+.code-block {
+    background: var(--bg-card);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+}
+
+.code-header {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.code-keyword { color: #c792ea; }
+.code-variable { color: #82aaff; }
+.code-string { color: #c3e88d; }
+
+/* ================================
+   Contact & Cards
+   ================================ */
+.highlight-item {
+    background: var(--bg-card);
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    transition: 0.3s;
+    display: block;
+}
+
+.highlight-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    background: var(--bg-card-hover);
+}
+
+.highlight-content h4 {
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+/* ================================
+   Responsive
+   ================================ */
+@media (max-width: 992px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .nav-links { display: none; } /* Mobile hamburger logic needed in JS */
+}
